@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/page_with_logic.dart';
+import 'package:mobyte_money/auth_part/presentation/pages/page_with_logic.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:mobyte_money/Auth_full/bloc/auth_bloc.dart';
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
-import 'package:mobyte_money/Auth_full/presentation/widgets/return_button.dart';
-import 'package:mobyte_money/Auth_full/presentation/widgets/textfields/password_text_field.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/log_in_page.dart';
+import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/presentation/widgets/return_button.dart';
+import 'package:mobyte_money/auth_part/presentation/widgets/textfields/password_text_field.dart';
+import 'package:mobyte_money/auth_part/presentation/pages/log_in_page.dart';
 
 class CreatePasswordPage extends HookWidget {
   const CreatePasswordPage({super.key});

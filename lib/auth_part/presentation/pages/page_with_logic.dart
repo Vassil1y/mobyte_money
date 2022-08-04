@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:mobyte_money/Auth_full/bloc/auth_bloc.dart';
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
 import 'package:sizer/sizer.dart';
 
 class PageWithLogic extends HookWidget {

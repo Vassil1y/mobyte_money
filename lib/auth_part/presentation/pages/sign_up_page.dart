@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/page_with_logic.dart';
+import 'package:mobyte_money/auth_part/presentation/pages/page_with_logic.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:mobyte_money/Auth_full/bloc/auth_bloc.dart';
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
-import 'package:mobyte_money/Auth_full/presentation/widgets/textfields/auth_text_field.dart';
-import 'package:mobyte_money/Auth_full/presentation/widgets/textfields/password_text_field.dart';
-import 'package:mobyte_money/Auth_full/presentation/widgets/return_button.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/homepage.dart';
+import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/presentation/widgets/textfields/auth_text_field.dart';
+import 'package:mobyte_money/auth_part/presentation/widgets/textfields/password_text_field.dart';
+import 'package:mobyte_money/auth_part/presentation/widgets/return_button.dart';
+import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/account_page.dart';
 
 import 'log_in_page.dart';
 
@@ -48,7 +48,7 @@ class SignUpPage extends HookWidget {
 
     return PageWithLogic(
       onPop: () async {Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const LogInPage()), (route) => false); return false;},
-      onSuccess: (){Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const HomePage()),(_)=>false);},
+      onSuccess: (){Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const AccountPage()),(_)=>false);},
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

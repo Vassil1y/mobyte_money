@@ -4,12 +4,12 @@ import 'package:sizer/sizer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:mobyte_money/Auth_full/bloc/auth_bloc.dart';
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/log_in_page.dart';
-import 'package:mobyte_money/Auth_full/data/auth_repository.dart';
+import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/presentation/pages/log_in_page.dart';
+import 'package:mobyte_money/auth_part/data/auth_repository.dart';
 
-import 'package:mobyte_money/Auth_full/data/firebase_repository.dart';
+import 'package:mobyte_money/auth_part/data/firebase_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

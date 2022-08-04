@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
 
 mixin TextFieldDesignMixin {
   static final style =  AuthTheme.lightText.copyWith(color: AuthTheme.textColor);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
 
 class ReturnButton extends StatelessWidget {
   const ReturnButton({super.key});

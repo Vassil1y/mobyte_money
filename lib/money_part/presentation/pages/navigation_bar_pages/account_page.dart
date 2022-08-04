@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:mobyte_money/Auth_full/bloc/auth_bloc.dart';
-import 'package:mobyte_money/Auth_full/presentation/auth_theme.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/log_in_page.dart';
-import 'package:mobyte_money/Auth_full/presentation/pages/page_with_logic.dart';
-import 'package:mobyte_money/Auth_full/data/auth_repository.dart';
+import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
+import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/auth_part/presentation/pages/log_in_page.dart';
+import 'package:mobyte_money/auth_part/presentation/pages/page_with_logic.dart';
+import 'package:mobyte_money/auth_part/data/auth_repository.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AccountPage extends StatelessWidget {
+  const AccountPage({super.key});
 
   @override
   Widget build(BuildContext context) {

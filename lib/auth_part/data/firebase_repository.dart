@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_admin/firebase_admin.dart' hide FirebaseException;
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:mobyte_money/Auth_full/data/auth_repository.dart';
+import 'package:mobyte_money/auth_part/data/auth_repository.dart';
 
 class FirebaseRepository extends AuthRepository {
   FirebaseRepository();
@@ -61,7 +61,7 @@ class FirebaseRepository extends AuthRepository {
           email: email, password: password);
       await _instance.signInWithEmailAndPassword(
           email: email, password: password);
-      
+
       await _storeInstance.collection('users').doc(username).set({'email':email});
       await _storeInstance.collection('users').doc(email).set({'username':username});
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:mobyte_money/Auth_full/presentation/widgets/textfields/text_field_design_mixin.dart';
+import 'package:mobyte_money/auth_part/presentation/widgets/textfields/text_field_design_mixin.dart';
 
 class AuthTextField extends StatelessWidget with TextFieldDesignMixin {
   const AuthTextField({super.key, required this.hint, required this.controller});
