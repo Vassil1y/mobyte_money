@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
-import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 import 'package:mobyte_money/auth_part/presentation/widgets/textfields/auth_text_field.dart';
 import 'package:mobyte_money/auth_part/presentation/widgets/textfields/password_text_field.dart';
 import 'package:mobyte_money/auth_part/presentation/widgets/return_button.dart';

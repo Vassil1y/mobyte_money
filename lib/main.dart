@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
-import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 import 'package:mobyte_money/auth_part/presentation/pages/log_in_page.dart';
 import 'package:mobyte_money/auth_part/data/auth_repository.dart';
 

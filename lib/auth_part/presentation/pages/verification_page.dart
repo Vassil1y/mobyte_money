@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
 import 'package:mobyte_money/auth_part/presentation/widgets/return_button.dart';
-import 'package:mobyte_money/auth_part/presentation/auth_theme.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 import 'package:mobyte_money/auth_part/presentation/pages/page_with_logic.dart';
 
 import 'package:mobyte_money/auth_part/presentation/pages/log_in_page.dart';
