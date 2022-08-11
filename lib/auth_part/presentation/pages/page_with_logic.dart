@@ -1,15 +1,17 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mobyte_money/auth_part/bloc/auth_bloc.dart';
 import 'package:mobyte_money/static_data/theme.dart';
 import 'package:sizer/sizer.dart';
 
 class PageWithLogic extends HookWidget {
   const PageWithLogic(
-      {super.key, required this.onSuccess, required this.onPop, required this.child});
+      {super.key,
+      required this.onSuccess,
+      required this.onPop,
+      required this.child});
 
   final void Function() onSuccess;
   final Future<bool> Function() onPop;
@@ -17,7 +19,6 @@ class PageWithLogic extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) async {
         if (state is AuthFail) {
@@ -26,7 +27,7 @@ class PageWithLogic extends HookWidget {
             duration: const Duration(seconds: 3),
             isDismissible: true,
             dismissDirection: FlushbarDismissDirection.VERTICAL,
-            backgroundColor: AuthTheme.errorColor,
+            backgroundColor: AppTheme.errorColor,
           ).show(context);
         } else if (state is AuthSuccess) {
           onSuccess();
@@ -53,7 +54,7 @@ class PageWithLogic extends HookWidget {
                       child: const Center(
                         child: CircularProgressIndicator(
                           strokeWidth: 4,
-                          color: AuthTheme.mainColor,
+                          color: AppTheme.mainColor,
                         ),
                       ),
                     );

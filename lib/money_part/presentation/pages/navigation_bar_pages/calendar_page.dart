@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobyte_money/debug_data.dart';
+import 'package:mobyte_money/money_part/presentation/pages/transactions/transaction_card.dart';
 import 'package:mobyte_money/static_data/theme.dart';
-import 'package:mobyte_money/money_part/presentation/pages/transactions/transactions_card.dart';
-import 'package:mobyte_money/money_part/presentation/pages/widgets/card_of_money.dart';
 
 class CalendarPage extends StatelessWidget {
   CalendarPage({Key? key}) : super(key: key);
@@ -43,8 +43,7 @@ class CalendarPage extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   stops: [0.6, 1],
-                  colors: [AuthTheme.mainColor, AuthTheme.subColor])
-             ),
+                  colors: [AppTheme.mainColor, AppTheme.subColor])),
           child: Padding(
             padding: const EdgeInsets.only(top: 30),
             child: Column(
@@ -105,16 +104,7 @@ class CalendarPage extends StatelessWidget {
         Container(
           padding: const EdgeInsets.only(top: 40),
           height: 120,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: const [
-              CardOfMoney(backgroundColor: Colors.amber),
-              CardOfMoney(backgroundColor: Colors.red),
-              CardOfMoney(backgroundColor: Colors.green),
-              CardOfMoney(backgroundColor: Colors.green),
-              CardOfMoney(backgroundColor: Colors.green),
-            ],
-          ),
+          child: ListView(scrollDirection: Axis.horizontal, children: kk),
         ),
         Expanded(
           child: Padding(
@@ -126,7 +116,7 @@ class CalendarPage extends StatelessWidget {
                 ),
                 Flexible(
                   child: ListView(
-                    children: [
+                    children: const [
                       TransactionCard(),
                       TransactionCard(),
                       TransactionCard(),

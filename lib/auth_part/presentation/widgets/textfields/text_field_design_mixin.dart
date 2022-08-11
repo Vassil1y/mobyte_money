@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mobyte_money/static_data/theme.dart';
 
 mixin TextFieldDesignMixin {
-  static final style =  AuthTheme.lightText.copyWith(color: AuthTheme.textColor);
+  static final style =  AppTheme.lightText.copyWith(color: AppTheme.textColor);
   static final decoration = InputDecoration(
     hintText: "",
-    hintStyle: AuthTheme.lightText,
+    hintStyle: AppTheme.lightText,
 
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
         width: 1.5,
-        color: AuthTheme.textColor.withOpacity(0.5),
+        color: AppTheme.textColor.withOpacity(0.5),
       ),
     ),
 
@@ -19,7 +19,7 @@ mixin TextFieldDesignMixin {
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.5,
-        color: AuthTheme.mainColor,
+        color: AppTheme.mainColor,
       ),
     ),
 
@@ -27,7 +27,7 @@ mixin TextFieldDesignMixin {
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.5,
-        color: AuthTheme.errorColor,
+        color: AppTheme.errorColor,
       ),
     ),
 

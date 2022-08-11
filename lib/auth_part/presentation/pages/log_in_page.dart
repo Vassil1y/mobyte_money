@@ -76,7 +76,7 @@ class LogInPage extends HookWidget {
                           (_) => false);
                     },
                     style: TextButton.styleFrom(
-                        textStyle: const TextStyle(color: AuthTheme.mainColor)),
+                        textStyle: const TextStyle(color: AppTheme.mainColor)),
                     child: const Text("Forgot password?"))),
             ElevatedButton(
                 onPressed: () {
@@ -84,7 +84,7 @@ class LogInPage extends HookWidget {
                       login: loginController.text,
                       password: passwordController.text);
                 },
-                style: AuthTheme.lightButtonStyle,
+                style: AppTheme.lightButtonStyle,
                 child: const Text("Login")),
             SizedBox(
               height: 6.25.h,
@@ -105,7 +105,7 @@ class LogInPage extends HookWidget {
                         },
                         style: TextButton.styleFrom(
                             textStyle:
-                                const TextStyle(color: AuthTheme.mainColor)),
+                                const TextStyle(color: AppTheme.mainColor)),
                         child: const Text("Sign up"))
                   ],
                 ),
@@ -120,18 +120,18 @@ class LogInPage extends HookWidget {
                     const Expanded(
                         child: Divider(
                       thickness: 1,
-                      color: AuthTheme.textColor,
+                      color: AppTheme.textColor,
                     )),
                     SizedBox(
                         width: 8.w,
                         child: Align(
                           alignment: Alignment.center,
-                          child: Text("or", style: AuthTheme.lightText),
+                          child: Text("or", style: AppTheme.lightText),
                         )),
                     const Expanded(
                         child: Divider(
                       thickness: 1,
-                      color: AuthTheme.textColor,
+                      color: AppTheme.textColor,
                     )),
                   ],
                 ),
@@ -142,7 +142,7 @@ class LogInPage extends HookWidget {
                   BlocProvider.of<AuthBloc>(context)
                       .add(const GoogleLogInEvent());
                 },
-                style: AuthTheme.lightButtonStyle,
+                style: AppTheme.lightButtonStyle,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -156,7 +156,7 @@ class LogInPage extends HookWidget {
             Platform.isIOS
                 ? ElevatedButton(
                     onPressed: () {},
-                    style: AuthTheme.lightButtonStyle,
+                    style: AppTheme.lightButtonStyle,
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [

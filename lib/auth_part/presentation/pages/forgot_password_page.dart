@@ -47,9 +47,9 @@ class ForgotPasswordPage extends HookWidget {
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                        child: Text("Forgot Your Password?", style: AuthTheme.headerText)
+                        child: Text("Forgot Your Password?", style: AppTheme.headerText)
                     ),
-                    Text("No worries, you just need to type your email or username and we will send the verification code", style: AuthTheme.bodyText),
+                    Text("No worries, you just need to type your email or username and we will send the verification code", style: AppTheme.bodyText),
                   ],
                 ),
               ),
@@ -61,7 +61,7 @@ class ForgotPasswordPage extends HookWidget {
 
               SizedBox(height: 4.h),
 
-              ElevatedButton(onPressed: (){_sendReset(context, login: loginController.text);}, style: AuthTheme.darkButtonStyle, child: const Text("Reset my password")),
+              ElevatedButton(onPressed: (){_sendReset(context, login: loginController.text);}, style: AppTheme.darkButtonStyle, child: const Text("Reset my password")),
 
               SizedBox(height: 20.h,),
             ]

@@ -39,9 +39,9 @@ class VerificationPage extends HookWidget {
                       children: [
                         Align(
                             alignment: Alignment.centerLeft,
-                            child: Text("Enter Verification Code", style: AuthTheme.headerText)
+                            child: Text("Enter Verification Code", style: AppTheme.headerText)
                         ),
-                        Text("Enter code that we have sent to your email", style: AuthTheme.bodyText),
+                        Text("Enter code that we have sent to your email", style: AppTheme.bodyText),
                       ],
                     ),
                   ),
@@ -58,9 +58,9 @@ class VerificationPage extends HookWidget {
                       obscureText: true,
 
                       pinTheme: PinTheme(
-                        activeColor: AuthTheme.textColor,
-                        selectedColor: AuthTheme.mainColor,
-                        inactiveColor: AuthTheme.textColor.withOpacity(0.5),
+                        activeColor: AppTheme.textColor,
+                        selectedColor: AppTheme.mainColor,
+                        inactiveColor: AppTheme.textColor.withOpacity(0.5),
 
                         fieldHeight: 8.h,
                         fieldWidth: 8.h,
@@ -71,9 +71,9 @@ class VerificationPage extends HookWidget {
 
                   SizedBox(height: 4.h),
 
-                  ElevatedButton(onPressed: (){BlocProvider.of<AuthBloc>(context).add(const DummyEvent());}, style: AuthTheme.darkButtonStyle, child: const Text("Reset my password")),
+                  ElevatedButton(onPressed: (){BlocProvider.of<AuthBloc>(context).add(const DummyEvent());}, style: AppTheme.darkButtonStyle, child: const Text("Reset my password")),
 
-                  TextButton(onPressed: (){}, style: TextButton.styleFrom(textStyle: const TextStyle(color: AuthTheme.mainColor)), child: const Text("Resend code")),
+                  TextButton(onPressed: (){}, style: TextButton.styleFrom(textStyle: const TextStyle(color: AppTheme.mainColor)), child: const Text("Resend code")),
                   SizedBox(height: 20.h),
                 ]
             ),

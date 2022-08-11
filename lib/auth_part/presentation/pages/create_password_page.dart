@@ -37,11 +37,11 @@ class CreatePasswordPage extends HookWidget {
                         Align(
                             alignment: Alignment.centerLeft,
                             child: Text("Create Password",
-                                style: AuthTheme.headerText)),
+                                style: AppTheme.headerText)),
                         Align(
                             alignment: Alignment.centerLeft,
                             child: Text("Create your new password to login",
-                                style: AuthTheme.bodyText)),
+                                style: AppTheme.bodyText)),
                       ],
                     ),
                   ),
@@ -60,7 +60,7 @@ class CreatePasswordPage extends HookWidget {
                   SizedBox(height: 3.h),
                   ElevatedButton(
                       onPressed: () {BlocProvider.of<AuthBloc>(context).add(const DummyEvent());},
-                      style: AuthTheme.darkButtonStyle,
+                      style: AppTheme.darkButtonStyle,
                       child: const Text("Register")),
                   SizedBox(height: 20.h),
                 ]),

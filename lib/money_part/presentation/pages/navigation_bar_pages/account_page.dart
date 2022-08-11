@@ -31,16 +31,16 @@ class AccountPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Text(RepositoryProvider.of<AuthRepository>(context).username, style: AuthTheme.headerText),
+                  Text(RepositoryProvider.of<AuthRepository>(context).username, style: AppTheme.headerText),
                   SizedBox(height: 5.h),
-                  Text(RepositoryProvider.of<AuthRepository>(context).userEmail, style: AuthTheme.headerText),
+                  Text(RepositoryProvider.of<AuthRepository>(context).userEmail, style: AppTheme.headerText),
                 ],
               ),
             ),
 
             SizedBox(height: 5.h),
             ElevatedButton(onPressed: () {BlocProvider.of<AuthBloc>(context).add(const LogOutEvent());},
-                style: AuthTheme.darkButtonStyle,
+                style: AppTheme.darkButtonStyle,
                 child: const Text("Logout")),
           ],
         ),

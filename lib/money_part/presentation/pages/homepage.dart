@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:mobyte_money/static_data/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobyte_money/money_part/bloc/navigation_bar_bloc/navigation_bar_bloc.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/account_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/calendar_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/graph_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/wallet_page.dart';
+import 'package:mobyte_money/money_part/presentation/pages/transactions/add_edit_transaction_page.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 
-class Homepage extends StatefulWidget {
+class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
-
-  @override
-  State<Homepage> createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  final pages = [GraphPage(), CalendarPage(), WalletPage(), AccountPage()];
-  int index = 3;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: pages[index],
+        backgroundColor: AppTheme.backColor,
+        body: BlocBuilder<NavigationBarBloc, NavigationBarState>(
+          builder: (context, state) {
+            return state;
+          },
+        ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: AuthTheme.mainColor,
-          onPressed: () {},
-          child: Icon(Icons.add),
+          backgroundColor: AppTheme.mainColor,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Transaction()));
+          },
+          child: const Icon(Icons.add),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
-          color: AuthTheme.mainColor,
-          shape: CircularNotchedRectangle(),
+          color: AppTheme.mainColor,
+          shape: const CircularNotchedRectangle(),
           notchMargin: 6,
           child: SizedBox(
             height: 60,
@@ -38,48 +41,44 @@ class _HomepageState extends State<Homepage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.home,
-                    color: Colors.white,
+                    color: AppTheme.lightColor,
                   ),
                   onPressed: () {
-                    setState(() {
-                      index = 0;
-                    });
+                    BlocProvider.of<NavigationBarBloc>(context)
+                        .add(const NavigationBarEvent(child: GraphPage()));
                   },
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.calendar_today,
-                    color: Colors.white,
+                    color: AppTheme.lightColor,
                   ),
                   onPressed: () {
-                    setState(() {
-                      index = 1;
-                    });
+                    BlocProvider.of<NavigationBarBloc>(context)
+                        .add(NavigationBarEvent(child: CalendarPage()));
                   },
                 ),
-                Text(""),
+                const Text(""),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.account_balance_wallet,
-                    color: Colors.white,
+                    color: AppTheme.lightColor,
                   ),
                   onPressed: () {
-                    setState(() {
-                      index = 2;
-                    });
+                    BlocProvider.of<NavigationBarBloc>(context)
+                        .add(NavigationBarEvent(child: WalletPage()));
                   },
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.account_circle,
-                    color: Colors.white,
+                    color: AppTheme.lightColor,
                   ),
                   onPressed: () {
-                    setState(() {
-                      index = 3;
-                    });
+                    BlocProvider.of<NavigationBarBloc>(context)
+                        .add(const NavigationBarEvent(child: AccountPage()));
                   },
                 ),
               ],

@@ -16,9 +16,9 @@ class ReturnButton extends StatelessWidget {
           SizedBox(height: MediaQuery.of(context).padding.top ,),
           RawMaterialButton(
             onPressed: () {Navigator.of(context).maybePop();},
-            fillColor: AuthTheme.mainColor.withOpacity(0.5),
+            fillColor: AppTheme.mainColor.withOpacity(0.5),
             shape: const CircleBorder(),
-            child: SizedBox(height: 12.w, child: const Icon(Icons.arrow_back_outlined, color: AuthTheme.backColor,)),
+            child: SizedBox(height: 12.w, child: const Icon(Icons.arrow_back_outlined, color: AppTheme.backColor,)),
           ),
         ],
       ),
