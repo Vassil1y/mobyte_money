@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 AuthBloc(RepositoryProvider.of<AuthRepository>(context)),
           ),
-          BlocProvider(create: (context) => NavigationBarBloc())
+          BlocProvider(create: (context) => NavigationBarBloc()),
         ],
         child: Sizer(builder: (context, orientation, deviceType) {
           return MaterialApp(

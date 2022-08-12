@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobyte_money/money_part/bloc/navigation_bar_bloc/navigation_bar_bloc.dart';
+import 'package:mobyte_money/money_part/bloc/transaction_page_bloc/transaction_page_bloc.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/account_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/calendar_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/graph_page.dart';
@@ -25,7 +26,7 @@ class Homepage extends StatelessWidget {
           backgroundColor: AppTheme.mainColor,
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Transaction()));
+                MaterialPageRoute(builder: (context) => BlocProvider(create: (context) => TransactionBloc(),child: Transaction(),)));
           },
           child: const Icon(Icons.add),
         ),

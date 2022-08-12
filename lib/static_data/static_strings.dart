@@ -18,3 +18,8 @@ const addTransaction = "Add a transaction";
 const editTransaction = "Edit a transaction";
 const totalExpenses =  "Your total expenses";
 const categoryString = "Category";
+const transactionTypeString = "Transaction type";
+const transactionStatus = "Status";
+
+const transactionStatusOk = "OK";
+const transactionStatusWait = "Wait";
