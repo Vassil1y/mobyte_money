@@ -6,7 +6,7 @@ import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/calendar_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/graph_page.dart';
 import 'package:mobyte_money/money_part/presentation/pages/navigation_bar_pages/wallet_page.dart';
-import 'package:mobyte_money/money_part/presentation/pages/transactions/add_edit_transaction_page.dart';
+import 'package:mobyte_money/money_part/presentation/pages/transactions/add_transaction_page.dart';
 import 'package:mobyte_money/static_data/theme.dart';
 
 class Homepage extends StatelessWidget {

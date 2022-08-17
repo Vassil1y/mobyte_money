@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
 
 class DescriptionButton extends StatelessWidget {
   const DescriptionButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController();
+
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         minimumSize: const Size(0, 64),
@@ -13,15 +18,20 @@ class DescriptionButton extends StatelessWidget {
         ),
       ),
       onPressed: () {},
-      child: const Padding(
-        padding: EdgeInsets.only(left: 5),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 5),
         child: Align(
           alignment: Alignment.topLeft,
           child: TextField(
+            controller: controller,
+            onSubmitted: (value){
+              BlocProvider.of<TransactionBloc>(context).add(
+                  ChangeDescriptionFieldEvent(description: value));
+            },
             minLines: 5,
             maxLines: 5,
             textInputAction: TextInputAction.done,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: "Description",
               hintStyle: TextStyle(color: Colors.grey),

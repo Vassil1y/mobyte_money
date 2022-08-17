@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'add_edit_transaction_page.dart';
+import 'add_transaction_page.dart';
 
 class TransactionCard extends StatelessWidget {
   const TransactionCard({Key? key}) : super(key: key);

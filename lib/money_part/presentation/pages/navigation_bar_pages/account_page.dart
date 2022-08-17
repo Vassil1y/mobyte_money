@@ -24,9 +24,9 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    email = instance.currentUser?.email.toString() == null
+    email = instance.currentUser?.email == null
         ? "Email"
-        : (instance.currentUser?.email).toString();
+        : (instance.currentUser?.email)!;
 
     return PageWithLogic(
       onPop: () async {

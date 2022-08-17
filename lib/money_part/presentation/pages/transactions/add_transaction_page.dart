@@ -70,7 +70,7 @@ class Transaction extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Expanded(
+        // child: Expanded(
           child: Padding(
             padding:
                 const EdgeInsets.only(top: 20, bottom: 10, left: 20, right: 20),
@@ -102,7 +102,7 @@ class Transaction extends StatelessWidget {
               ],
             ),
           ),
-        ),
+        // ),
       ),
     );
   }
