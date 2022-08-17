@@ -9,7 +9,7 @@ part 'navigation_bar_state.dart';
 class NavigationBarBloc extends Bloc<NavigationBarEvent, NavigationBarState> {
   NavigationBarBloc()
       : super(
-          const NavigationBarState(
+          NavigationBarState(
             child: AccountPage(),
           ),
         ) {

@@ -79,7 +79,7 @@ class Homepage extends StatelessWidget {
                   ),
                   onPressed: () {
                     BlocProvider.of<NavigationBarBloc>(context)
-                        .add(const NavigationBarEvent(child: AccountPage()));
+                        .add(NavigationBarEvent(child: AccountPage()));
                   },
                 ),
               ],

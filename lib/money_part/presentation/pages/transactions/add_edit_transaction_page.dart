@@ -57,6 +57,8 @@ class Transaction extends StatelessWidget {
     DropdownMenuItem(value: other, child: Text(other)),
   ];
 
+  //Get id structure:
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

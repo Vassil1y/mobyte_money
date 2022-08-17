@@ -43,6 +43,12 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
         transactionPrototype.description = event.description;
         emit(ChangeDescriptionState(description: event.description));
       }
+      if (event is AddButtonPressedEvent) {
+        //ADD
+        // QuerySnapshot querySnapshot = await _storeInstance.collection('users').get();
+        // print(querySnapshot.docs[0].id);
+        emit(const AddButtonPressedDoneState());
+      }
     });
   }
 }
