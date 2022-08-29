@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobyte_money/debug_data.dart';
-import 'package:mobyte_money/money_part/presentation/pages/transactions/transaction_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobyte_money/money_part/bloc/transaction_page_bloc/transaction_page_bloc.dart';
 import 'package:mobyte_money/static_data/theme.dart';
 
 class CalendarPage extends StatelessWidget {
-  CalendarPage({Key? key}) : super(key: key);
+  CalendarPage({Key? key}) : super(key: key) {}
 
   final PageController controller = PageController(initialPage: 0);
   int current_page_index = 0;
@@ -31,6 +33,11 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void rofl() {
+      BlocProvider.of<TransactionBloc>(context)
+          .add(const ChangeTypeButtonColorToTrueEvent());
+    }
+
     return Column(
       children: [
         Container(
@@ -101,11 +108,11 @@ class CalendarPage extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.only(top: 40),
-          height: 120,
-          child: ListView(scrollDirection: Axis.horizontal, children: kk),
-        ),
+        // Container(
+        //   padding: const EdgeInsets.only(top: 40),
+        //   height: 120,
+        //   child: ListView(scrollDirection: Axis.horizontal, children: kk),
+        // ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
@@ -114,16 +121,31 @@ class CalendarPage extends StatelessWidget {
                 const Divider(
                   thickness: 3,
                 ),
-                Flexible(
-                  child: ListView(
-                    children: const [
-                      TransactionCard(),
-                      TransactionCard(),
-                      TransactionCard(),
-                      TransactionCard(),
-                    ],
-                  ),
-                ),
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection("transactions")
+                        .doc((FirebaseAuth.instance.currentUser?.email)!
+                            .toString())
+                        .collection("transactions")
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+
+                      return Flexible(
+                        child: ListView(
+                          children: snapshot.data!.docs.map((document) {
+                            return Container(
+                              child: Text("Title: " + document['data']),
+                            );
+                          }).toList(),
+                        ),
+                      );
+                    }),
               ],
             ),
           ),

@@ -3,17 +3,13 @@ import 'package:sizer/sizer.dart';
 
 abstract class AppTheme {
   static final theme = ThemeData(
-    scaffoldBackgroundColor: backColor,
-    /*buttonTheme: const ButtonThemeData(
+      scaffoldBackgroundColor: backColor,
+      /*buttonTheme: const ButtonThemeData(
       buttonColor: mainColor,
     ),*/ //Не работает почему-то
-    primaryColor: mainColor,
-    fontFamily: 'Nunito',
-    appBarTheme: const AppBarTheme(
-      backgroundColor: backColor,
-      elevation: 0
-    )
-  );
+      primaryColor: mainColor,
+      fontFamily: 'Nunito',
+      appBarTheme: const AppBarTheme(backgroundColor: backColor, elevation: 0));
 
   static const backColor = Colors.white;
   static const lightColor = Colors.white;

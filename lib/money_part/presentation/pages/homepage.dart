@@ -26,7 +26,7 @@ class Homepage extends StatelessWidget {
           backgroundColor: AppTheme.mainColor,
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => BlocProvider(create: (context) => TransactionBloc(),child: Transaction(),)));
+                MaterialPageRoute(builder: (context) => Transaction()));
           },
           child: const Icon(Icons.add),
         ),
@@ -57,6 +57,8 @@ class Homepage extends StatelessWidget {
                     color: AppTheme.lightColor,
                   ),
                   onPressed: () {
+                    BlocProvider.of<TransactionBloc>(context)
+                        .add(const LoadData());
                     BlocProvider.of<NavigationBarBloc>(context)
                         .add(NavigationBarEvent(child: CalendarPage()));
                   },

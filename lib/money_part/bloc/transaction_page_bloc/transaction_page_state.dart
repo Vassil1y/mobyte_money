@@ -59,3 +59,19 @@ class AddButtonPressedFailedState extends TransactionState {
 class EmptyState extends TransactionState {
   const EmptyState();
 }
+
+class NewState extends TransactionState {
+  final String new1;
+  final bool new2;
+
+  const NewState(this.new1, this.new2);
+
+  NewState copyWith(String? new1, bool? new2) {
+    return NewState(new1 ?? this.new1, new2 ?? this.new2);
+  }
+}
+
+class LoadedList extends TransactionState {
+  final List<Map<String, dynamic>> list;
+  const LoadedList({required this.list});
+}
