@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CardOfMoney extends StatelessWidget {
-  const CardOfMoney({Key? key, required this.backgroundColor})
+  const CardOfMoney(
+      {Key? key, required this.backgroundColor, required this.text})
       : super(key: key);
   final backgroundColor;
+  final text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class CardOfMoney extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [Text("data"), Text("data")],
+          children: [Text(text), Text("data")],
         ),
       ),
     );

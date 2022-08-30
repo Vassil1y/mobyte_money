@@ -110,13 +110,7 @@ class WalletPage extends StatelessWidget {
           height: 120,
           child: ListView(
             scrollDirection: Axis.horizontal,
-            children: const [
-              CardOfMoney(backgroundColor: Colors.amber),
-              CardOfMoney(backgroundColor: Colors.red),
-              CardOfMoney(backgroundColor: Colors.green),
-              CardOfMoney(backgroundColor: Colors.green),
-              CardOfMoney(backgroundColor: Colors.green),
-            ],
+            children: []
           ),
         ),
         Expanded(

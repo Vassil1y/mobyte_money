@@ -26,6 +26,7 @@ class AddButton extends StatelessWidget {
         onPressed: () {
           BlocProvider.of<TransactionBloc>(context)
               .add(const AddButtonPressedEvent());
+
           // .add(const LoadData());
         },
         child: const Text(

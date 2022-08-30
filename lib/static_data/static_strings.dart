@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const rub = "₽";
 
 const salariesDev = "Salaries dev.";
@@ -49,4 +51,17 @@ const List<String> months = [
   "October",
   "November",
   "December"
+];
+const List<Color> categoryColors = [
+  Color.fromARGB(167, 49, 49, 1),
+  Color.fromARGB(162, 116, 48, 1),
+  Color.fromARGB(41, 134, 147, 1),
+  Color.fromARGB(145, 55, 188, 1),
+  Color.fromARGB(140, 102, 3, 1),
+  Color.fromARGB(25, 152, 207, 1),
+  Color.fromARGB(157, 48, 167, 1),
+  Color.fromARGB(85, 157, 40, 1),
+  Color.fromARGB(43, 41, 147, 1),
+  Color.fromARGB(186, 28, 132, 1),
+  Color.fromARGB(186, 28, 132, 1),
 ];

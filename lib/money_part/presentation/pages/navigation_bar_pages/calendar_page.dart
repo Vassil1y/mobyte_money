@@ -5,6 +5,7 @@ import 'package:mobyte_money/static_data/static_strings.dart';
 import 'package:mobyte_money/static_data/theme.dart';
 
 import '../../../../debug_data.dart';
+import '../widgets/card_of_money.dart';
 
 class CalendarPage extends StatelessWidget {
   CalendarPage({Key? key}) : super(key: key);
@@ -13,6 +14,15 @@ class CalendarPage extends StatelessWidget {
 
   int current_page_index = 0;
   final List<Container> z = [];
+  int sum = 0;
+
+  List<CardOfMoney> moneyCard(){
+    List<CardOfMoney> temp = [];
+    for(int i = 0; i<categoriesList.length;i++){
+      temp.add(CardOfMoney(backgroundColor: categoryColors[i], text: categoriesList[i],));
+    }
+    return temp;
+  }
 
   void rightToPage() {
     if (current_page_index != 3) {
@@ -36,16 +46,11 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<TransactionBloc>(context).add(const FetchEvent());
+     BlocProvider.of<TransactionBloc>(context).add(const FetchEvent());
     void rofl() {
       BlocProvider.of<TransactionBloc>(context)
           .add(const ChangeTypeButtonColorToTrueEvent());
     }
-
-    void rof2l() {
-      BlocProvider.of<TransactionBloc>(context).add(const FetchEvent());
-    }
-
     List<Container> asdas() {
       List<Container> kk = [];
       months.forEach((element) {
@@ -58,22 +63,29 @@ class CalendarPage extends StatelessWidget {
     }
 
     return BlocBuilder<TransactionBloc, TransactionState>(
+
         buildWhen: (previous, current) {
       if (current is FetchState) {
+
         return true;
       } else {
         return false;
       }
     }, builder: (context, state) {
       if (state is FetchState) {
+        if(z.isNotEmpty){z.clear();sum=0;}
         for (var element in state.transactionsList) {
-          print(element.date);
+          print(element.date + sum.toString());
+          sum+=element.amount;
+
           z.add(Container(
             color: Colors.grey,
             height: 100,
             child: Text(element.date),
           ));
+
         }
+        print("asdasdasdasd");
         return Column(
           children: [
             Container(
@@ -121,8 +133,8 @@ class CalendarPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Text("data"),
-                    Text("data")
+                    Text(sum>0 ? "Profit" : "Loss"),
+                    Text("${rub}$sum", style: TextStyle(color: AppTheme.lightColor),)
                   ],
                 ),
               ),
@@ -130,7 +142,7 @@ class CalendarPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(top: 40),
               height: 120,
-              child: ListView(scrollDirection: Axis.horizontal, children: kk),
+              child: ListView(scrollDirection: Axis.horizontal, children: moneyCard()),
             ),
             Expanded(
               child: Padding(
@@ -178,7 +190,7 @@ class CalendarPage extends StatelessWidget {
           ],
         );
       } else {
-        return const CircularProgressIndicator();
+        return const Center(child: CircularProgressIndicator());
       }
     });
   }

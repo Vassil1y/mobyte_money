@@ -48,16 +48,6 @@ class AddButtonPressedEvent extends TransactionEvent {
   const AddButtonPressedEvent();
 }
 
-class LoadData extends TransactionEvent {
-  const LoadData();
-}
-
-class GetSomeData extends TransactionEvent {
-  const GetSomeData({required this.dateTime});
-
-  final DateTime dateTime;
-}
-
 class FetchEvent extends TransactionEvent{
   final String date;
   const FetchEvent({this.date = ""});

@@ -28,7 +28,7 @@ class TransactionPageAppbar extends StatelessWidget {
                 BlocProvider.of<TransactionBloc>(context).add(
                     const ClearDataEvent());
                 BlocProvider.of<TransactionBloc>(context)
-                    .add(const FetchEvent(date: "2022-08-12" ));
+                    .add(const FetchEvent());
                 Navigator.pop(context);
               },
               icon: const Icon(

@@ -18,11 +18,11 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     TransactionClass transactionPrototype = TransactionClass();
 
     on<TransactionEvent>(
-      (event, emit) async{
-        if(event is FetchEvent){
+      (event, emit) async {
+        if (event is FetchEvent) {
+          _transactions.clear();
           await _onFetch("", emit);
           print(_transactions);
-
           emit(FetchState(transactionsList: _transactions));
         }
 
@@ -58,7 +58,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           transactionPrototype.description = event.description;
           emit(ChangeDescriptionState(description: event.description));
         }
-        if(event is ClearDataEvent){
+        if (event is ClearDataEvent) {
           transactionPrototype = TransactionClass();
           emit(const EmptyState());
         }
@@ -83,6 +83,10 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
             print(e);
 
             emit(const AddButtonPressedFailedState());
+            _transactions.clear();
+            await _onFetch("", emit);
+            print(_transactions);
+            emit(FetchState(transactionsList: _transactions));
           }
 
           //ADD
@@ -90,13 +94,11 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           // print(querySnapshot.docs[0].id);
           // Хранить лист в блоке, отдавать в стейте отфильтрованные
         }
-        if (event is GetSomeData) {}
       },
     );
   }
 
   Future<void> _onFetch(String date, Emitter emit) async {
-    _transactions.clear();
     try {
       var rawTransactions = await storeInstance
           .collection("transactions")
@@ -107,19 +109,20 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
         var item = rawTransactions.docs[i];
         var data = item.data();
         // print(data["data"]);
-        final TransactionClass transaction = TransactionClass(
-          date: data["data"],
-        );
+        TransactionClass transaction = TransactionClass(
+            date: data["data"],
+            amount: data["amount"],
+            category: data["category"],
+            transactionStatus: data["status"],
+            transactionType: data["type"]);
         _transactions.add(transaction);
-        emit(FetchState(transactionsList: _transactions));
       }
-
-
       return;
       // if(date.isNotEmpty){
-        final transactions = _transactions.where((element) => element.date == date).toList();
-        emit(FetchState(transactionsList: transactions));
-        // return;
+      final transactions =
+          _transactions.where((element) => element.date == date).toList();
+      emit(FetchState(transactionsList: transactions));
+      // return;
       // }
 
     } catch (e) {

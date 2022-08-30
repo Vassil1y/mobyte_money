@@ -15,6 +15,7 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        extendBody: true,
         backgroundColor: AppTheme.backColor,
         body: BlocBuilder<NavigationBarBloc, NavigationBarState>(
           builder: (context, state) {
