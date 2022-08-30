@@ -48,8 +48,9 @@ class AddButtonPressedEvent extends TransactionEvent {
   const AddButtonPressedEvent();
 }
 
-class FetchEvent extends TransactionEvent{
+class FetchEvent extends TransactionEvent {
   final String date;
+
   const FetchEvent({this.date = ""});
 }
 
@@ -57,6 +58,6 @@ class EmptyEvent extends TransactionEvent {
   const EmptyEvent();
 }
 
-class ClearDataEvent extends TransactionEvent{
+class ClearDataEvent extends TransactionEvent {
   const ClearDataEvent();
 }

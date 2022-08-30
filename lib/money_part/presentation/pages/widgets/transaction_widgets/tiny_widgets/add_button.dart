@@ -10,8 +10,8 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<TransactionBloc, TransactionState>(
-      listener: (context, state){
-        if(state is AddButtonPressedDoneState){
+      listener: (context, state) {
+        if (state is AddButtonPressedDoneState) {
           Navigator.pop(context);
         }
       },
@@ -38,6 +38,5 @@ class AddButton extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

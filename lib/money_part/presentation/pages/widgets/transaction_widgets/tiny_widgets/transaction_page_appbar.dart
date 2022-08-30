@@ -5,7 +5,8 @@ import '../../../../../../static_data/theme.dart';
 import '../../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
 
 class TransactionPageAppbar extends StatelessWidget {
-  const TransactionPageAppbar({Key? key, required this.title}) : super(key: key);
+  const TransactionPageAppbar({Key? key, required this.title})
+      : super(key: key);
   final title;
 
   @override
@@ -25,8 +26,8 @@ class TransactionPageAppbar extends StatelessWidget {
             backgroundColor: AppTheme.mainColor.withOpacity(0.5),
             child: IconButton(
               onPressed: () {
-                BlocProvider.of<TransactionBloc>(context).add(
-                    const ClearDataEvent());
+                BlocProvider.of<TransactionBloc>(context)
+                    .add(const ClearDataEvent());
                 BlocProvider.of<TransactionBloc>(context)
                     .add(const FetchEvent());
                 Navigator.pop(context);

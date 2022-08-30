@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../static_data/theme.dart';
 import '../transactions/transaction_card.dart';
-import '../widgets/card_of_money.dart';
 
 class WalletPage extends StatelessWidget {
   WalletPage({Key? key}) : super(key: key);
@@ -108,10 +107,7 @@ class WalletPage extends StatelessWidget {
         Container(
           padding: const EdgeInsets.only(top: 40),
           height: 120,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: []
-          ),
+          child: ListView(scrollDirection: Axis.horizontal, children: []),
         ),
         Expanded(
           child: Padding(
