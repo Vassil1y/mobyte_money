@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 
-import '../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
+import '../../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
 
 class DescriptionButton extends StatelessWidget {
   const DescriptionButton({Key? key}) : super(key: key);
@@ -23,10 +24,11 @@ class DescriptionButton extends StatelessWidget {
         child: Align(
           alignment: Alignment.topLeft,
           child: TextField(
+            style: const TextStyle(color: AppTheme.mainColor),
             controller: controller,
-            onSubmitted: (value){
-              BlocProvider.of<TransactionBloc>(context).add(
-                  ChangeDescriptionFieldEvent(description: value));
+            onSubmitted: (value) {
+              BlocProvider.of<TransactionBloc>(context)
+                  .add(ChangeDescriptionFieldEvent(description: value));
             },
             minLines: 5,
             maxLines: 5,

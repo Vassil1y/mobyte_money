@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobyte_money/money_part/bloc/transaction_page_bloc/transaction_page_bloc.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 
 class AmountButton extends StatelessWidget {
   const AmountButton({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class AmountButton extends StatelessWidget {
       ),
       onPressed: () {},
       child: TextField(
+        style: const TextStyle(color: AppTheme.mainColor),
         keyboardType: TextInputType.number,
         onSubmitted: (value) {
           BlocProvider.of<TransactionBloc>(context)

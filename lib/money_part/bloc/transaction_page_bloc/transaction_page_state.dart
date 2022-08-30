@@ -73,5 +73,12 @@ class NewState extends TransactionState {
 
 class LoadedList extends TransactionState {
   final List<Map<String, dynamic>> list;
+
   const LoadedList({required this.list});
+}
+
+class FetchState extends TransactionState {
+  final List<TransactionClass> transactionsList;
+
+  const FetchState({required this.transactionsList});
 }

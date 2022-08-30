@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobyte_money/money_part/presentation/pages/widgets/transaction_widgets/transaction_page_button.dart';
+import 'package:mobyte_money/money_part/presentation/pages/widgets/transaction_widgets/tiny_widgets/transaction_page_button.dart';
 
-import '../../../../../static_data/static_strings.dart';
-import '../../../../../static_data/theme.dart';
-import '../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
+import '../../../../../../static_data/static_strings.dart';
+import '../../../../../../static_data/theme.dart';
+import '../../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
 
 class TypeButtons extends StatelessWidget {
   const TypeButtons({Key? key}) : super(key: key);

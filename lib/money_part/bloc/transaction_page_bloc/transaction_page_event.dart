@@ -58,6 +58,15 @@ class GetSomeData extends TransactionEvent {
   final DateTime dateTime;
 }
 
+class FetchEvent extends TransactionEvent{
+  final String date;
+  const FetchEvent({this.date = ""});
+}
+
 class EmptyEvent extends TransactionEvent {
   const EmptyEvent();
+}
+
+class ClearDataEvent extends TransactionEvent{
+  const ClearDataEvent();
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:mobyte_money/static_data/theme.dart';
 
-import '../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
+import '../../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
 import 'outlined_button.dart';
 
 class DatePickerButton extends StatelessWidget {
@@ -30,7 +31,7 @@ class DatePickerButton extends StatelessWidget {
                       if (state is ChangeDateFieldState) {
                         return Text(
                           state.dateTime.toString(),
-                          style: const TextStyle(color: Colors.grey),
+                          style: const TextStyle(color: AppTheme.mainColor),
                         );
                       } else {
                         return const Text(

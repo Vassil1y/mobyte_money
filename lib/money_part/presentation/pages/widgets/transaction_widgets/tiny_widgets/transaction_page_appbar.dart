@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../static_data/theme.dart';
+import '../../../../../../static_data/theme.dart';
+import '../../../../../bloc/transaction_page_bloc/transaction_page_bloc.dart';
 
 class TransactionPageAppbar extends StatelessWidget {
   const TransactionPageAppbar({Key? key, required this.title}) : super(key: key);
@@ -23,6 +25,10 @@ class TransactionPageAppbar extends StatelessWidget {
             backgroundColor: AppTheme.mainColor.withOpacity(0.5),
             child: IconButton(
               onPressed: () {
+                BlocProvider.of<TransactionBloc>(context).add(
+                    const ClearDataEvent());
+                BlocProvider.of<TransactionBloc>(context)
+                    .add(const FetchEvent(date: "2022-08-12" ));
                 Navigator.pop(context);
               },
               icon: const Icon(

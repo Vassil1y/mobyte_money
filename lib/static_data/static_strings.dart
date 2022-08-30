@@ -16,10 +16,37 @@ const loss = "Loss";
 
 const addTransaction = "Add a transaction";
 const editTransaction = "Edit a transaction";
-const totalExpenses =  "Your total expenses";
+const totalExpenses = "Your total expenses";
 const categoryString = "Category";
 const transactionTypeString = "Transaction type";
 const transactionStatus = "Status";
 
 const transactionStatusOk = "OK";
 const transactionStatusWait = "Wait";
+const List<String> categoriesList = [
+  salariesDev,
+  salariesMg,
+  internalHr,
+  externalHr,
+  credit,
+  dividends,
+  bankCharges,
+  taxes,
+  awards,
+  profit,
+  other
+];
+const List<String> months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];

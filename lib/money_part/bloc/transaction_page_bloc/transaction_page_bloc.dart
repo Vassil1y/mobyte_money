@@ -12,23 +12,18 @@ part 'transaction_page_state.dart';
 class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final storeInstance = FirebaseFirestore.instance;
   final authInstance = FirebaseAuth.instance;
-  late QuerySnapshot<Map<String, dynamic>> transactionTotalList;
-  late List<Map<String, dynamic>> kk;
-  List<TransactionClass> _transactions = [];
+  final List<TransactionClass> _transactions = [];
 
   TransactionBloc() : super(const TransactionInitial()) {
     TransactionClass transactionPrototype = TransactionClass();
 
     on<TransactionEvent>(
-      (event, emit) {
-        if (event is LoadData) {
-          try {
-            // getCollection();
-            kk = transactionTotalList.docs.map((doc) => doc.data()).toList();
-            emit(LoadedList(list: kk));
-          } on FirebaseStorageError catch (e) {
-            print(e);
-          }
+      (event, emit) async{
+        if(event is FetchEvent){
+          await _onFetch("", emit);
+          print(_transactions);
+
+          emit(FetchState(transactionsList: _transactions));
         }
 
         if (event is ChangeTypeButtonColorToTrueEvent) {
@@ -63,6 +58,10 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           transactionPrototype.description = event.description;
           emit(ChangeDescriptionState(description: event.description));
         }
+        if(event is ClearDataEvent){
+          transactionPrototype = TransactionClass();
+          emit(const EmptyState());
+        }
         if (event is AddButtonPressedEvent) {
           final data = {
             "type": transactionPrototype.transactionType,
@@ -96,16 +95,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     );
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> getCollection() async {
-    var transactionTotalList = await storeInstance
-        .collection("transactions")
-        .doc((authInstance.currentUser?.email)!.toString())
-        .collection("transactions")
-        .get();
-    return transactionTotalList;
-  }
-
-  Future<void> _onFetch(Emitter emit) async {
+  Future<void> _onFetch(String date, Emitter emit) async {
     _transactions.clear();
     try {
       var rawTransactions = await storeInstance
@@ -116,11 +106,22 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       for (var i = 0; i < rawTransactions.docs.length; i++) {
         var item = rawTransactions.docs[i];
         var data = item.data();
+        // print(data["data"]);
         final TransactionClass transaction = TransactionClass(
-          category: data["type"],
+          date: data["data"],
         );
         _transactions.add(transaction);
+        emit(FetchState(transactionsList: _transactions));
       }
+
+
+      return;
+      // if(date.isNotEmpty){
+        final transactions = _transactions.where((element) => element.date == date).toList();
+        emit(FetchState(transactionsList: transactions));
+        // return;
+      // }
+
     } catch (e) {
       print(e);
     }

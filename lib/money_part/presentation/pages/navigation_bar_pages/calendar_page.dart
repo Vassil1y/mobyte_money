@@ -1,15 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobyte_money/money_part/bloc/transaction_page_bloc/transaction_page_bloc.dart';
+import 'package:mobyte_money/static_data/static_strings.dart';
 import 'package:mobyte_money/static_data/theme.dart';
 
+import '../../../../debug_data.dart';
+
 class CalendarPage extends StatelessWidget {
-  CalendarPage({Key? key}) : super(key: key) {}
+  CalendarPage({Key? key}) : super(key: key);
 
   final PageController controller = PageController(initialPage: 0);
+
   int current_page_index = 0;
+  final List<Container> z = [];
 
   void rightToPage() {
     if (current_page_index != 3) {
@@ -33,124 +36,150 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<TransactionBloc>(context).add(const FetchEvent());
     void rofl() {
       BlocProvider.of<TransactionBloc>(context)
           .add(const ChangeTypeButtonColorToTrueEvent());
     }
 
-    return Column(
-      children: [
-        Container(
-          height: 160,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40)),
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.6, 1],
-                  colors: [AppTheme.mainColor, AppTheme.subColor])),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+    void rof2l() {
+      BlocProvider.of<TransactionBloc>(context).add(const FetchEvent());
+    }
+
+    List<Container> asdas() {
+      List<Container> kk = [];
+      months.forEach((element) {
+        kk.add(Container(
+          alignment: Alignment.center,
+          child: Text(element),
+        ));
+      });
+      return kk;
+    }
+
+    return BlocBuilder<TransactionBloc, TransactionState>(
+        buildWhen: (previous, current) {
+      if (current is FetchState) {
+        return true;
+      } else {
+        return false;
+      }
+    }, builder: (context, state) {
+      if (state is FetchState) {
+        for (var element in state.transactionsList) {
+          print(element.date);
+          z.add(Container(
+            color: Colors.grey,
+            height: 100,
+            child: Text(element.date),
+          ));
+        }
+        return Column(
+          children: [
+            Container(
+              height: 160,
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40)),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.6, 1],
+                      colors: [AppTheme.mainColor, AppTheme.subColor])),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        leftToPage();
-                      },
-                      icon: const Icon(Icons.chevron_left),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            leftToPage();
+                          },
+                          icon: const Icon(Icons.chevron_left),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(right: 4, left: 4),
+                          width: 80,
+                          height: 60,
+                          child: PageView(
+                            scrollDirection: Axis.horizontal,
+                            controller: controller,
+                            onPageChanged: (k) {},
+                            children: asdas(),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            rightToPage();
+                          },
+                          icon: const Icon(Icons.chevron_right),
+                        ),
+                      ],
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(right: 4, left: 4),
-                      width: 80,
-                      height: 60,
-                      child: PageView(
-                        scrollDirection: Axis.horizontal,
-                        controller: controller,
-                        onPageChanged: (k) {},
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            child: const Text("data"),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            child: const Text("data"),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            child: const Text("data"),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            child: const Text("data"),
-                          ),
-                        ],
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        rightToPage();
-                      },
-                      icon: const Icon(Icons.chevron_right),
-                    ),
+                    Text("data"),
+                    Text("data")
                   ],
                 ),
-                Text("data"),
-                Text("data")
-              ],
+              ),
             ),
-          ),
-        ),
-        // Container(
-        //   padding: const EdgeInsets.only(top: 40),
-        //   height: 120,
-        //   child: ListView(scrollDirection: Axis.horizontal, children: kk),
-        // ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              children: [
-                const Divider(
-                  thickness: 3,
-                ),
-                StreamBuilder(
-                    stream: FirebaseFirestore.instance
-                        .collection("transactions")
-                        .doc((FirebaseAuth.instance.currentUser?.email)!
-                            .toString())
-                        .collection("transactions")
-                        .snapshots(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (!snapshot.hasData) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-
-                      return Flexible(
+            Container(
+              padding: const EdgeInsets.only(top: 40),
+              height: 120,
+              child: ListView(scrollDirection: Axis.horizontal, children: kk),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Column(
+                  children: [
+                    Divider(
+                      thickness: 3,
+                    ),
+                    // BlocBuilder(builder: builder)
+                    Flexible(
                         child: ListView(
-                          children: snapshot.data!.docs.map((document) {
-                            return Container(
-                              child: Text("Title: " + document['data']),
-                            );
-                          }).toList(),
-                        ),
-                      );
-                    }),
-              ],
+                      children: z,
+                    )),
+
+                    // StreamBuilder(
+                    //     stream: FirebaseFirestore.instance
+                    //         .collection("transactions")
+                    //         .doc((FirebaseAuth.instance.currentUser?.email)!
+                    //         .toString())
+                    //         .collection("transactions")
+                    //         .snapshots(),
+                    //     builder: (BuildContext context,
+                    //         AsyncSnapshot<QuerySnapshot> snapshot) {
+                    //       if (!snapshot.hasData) {
+                    //         return const Center(
+                    //           child: CircularProgressIndicator(),
+                    //         );
+                    //       }
+                    //
+                    //       return Flexible(
+                    //         child: ListView(
+                    //           children: snapshot.data!.docs.map((document) {
+                    //             return Container(
+                    //               child: Text("Title: " + document['data']),
+                    //             );
+                    //           }).toList(),
+                    //         ),
+                    //       );
+                    //     }),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-      ],
-    );
+          ],
+        );
+      } else {
+        return const CircularProgressIndicator();
+      }
+    });
   }
 }
